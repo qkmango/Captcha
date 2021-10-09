@@ -92,7 +92,6 @@ public class CaptchaBuilder {
 
     /**
      * 创建一个验证码
-     *
      * @return Captcha 返回一个验证码对象
      */
     public Captcha create() throws IOException {
@@ -101,31 +100,31 @@ public class CaptchaBuilder {
 
         // 定义图像buffer
         BufferedImage buffImg = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
-        Graphics gd = buffImg.getGraphics();
+        Graphics g = buffImg.getGraphics();
         // 创建一个随机数生成器类
         Random random = new Random();
         // 将图像填充为白色
-        gd.setColor(backgroundColor);
-        gd.fillRect(0, 0, width, height);
+        g.setColor(backgroundColor);
+        g.fillRect(0, 0, width, height);
 
-        // 创建字体，字体的大小应该根据图片的高度来定
-        Font font = new Font("Default", Font.BOLD, fontHeight);
+        // 创建字体，字体的大小应该根据图片的高度来定，文字使用默认字体 Default
+        Font font = new Font(null, Font.BOLD, fontHeight);
         // 设置字体
-        gd.setFont(font);
+        g.setFont(font);
 
         // 画边框
-        gd.setColor(borderColor);
-        gd.drawRect(0, 0, width - 1, height - 1);
+        g.setColor(borderColor);
+        g.drawRect(0, 0, width - 1, height - 1);
 
         if (interference) {
             // 随机产生 interferenceSize 条干扰线
-            gd.setColor(interferenceColor);
+            g.setColor(interferenceColor);
             for (int i = 0; i < interferenceSize; i++) {
                 int x = random.nextInt(width);
                 int y = random.nextInt(height);
                 int xl = random.nextInt(12);
                 int yl = random.nextInt(12);
-                gd.drawLine(x, y, x + xl, y + yl);
+                g.drawLine(x, y, x + xl, y + yl);
             }
         }
 
@@ -134,7 +133,7 @@ public class CaptchaBuilder {
 
         int red, green, blue;
 
-        // 随机产生codeCount数字的验证码
+        // 随机产生 codeSize 个验证文字
         for (int i = 0; i < codeSize; i++) {
             // 得到随机产生的验证码数字
             String code = String.valueOf(codeSequence[random.nextInt(codeSequence.length)]);
@@ -144,9 +143,9 @@ public class CaptchaBuilder {
             blue = random.nextInt(255);
 
             // 用随机产生的颜色将验证码绘制到图像中
-            gd.setColor(new Color(red, green, blue));
+            g.setColor(new Color(red, green, blue));
             int codeLeft = paddingLeft + i * codeBasicLeft;
-            gd.drawString(code, codeLeft, codeY);
+            g.drawString(code, codeLeft, codeY);
 
             // 将产生的四个随机数组合在一起
             randomCode.append(code);
@@ -158,9 +157,9 @@ public class CaptchaBuilder {
         //存放验证码图片
         //将图片转为 base64 存放
         if (base64) {
-            ByteArrayOutputStream bos = new ByteArrayOutputStream();
-            ImageIO.write(buffImg, "jpeg", bos);
-            byte[] bytes = bos.toByteArray();
+            ByteArrayOutputStream out = new ByteArrayOutputStream();
+            ImageIO.write(buffImg, "jpeg", out);
+            byte[] bytes = out.toByteArray();
 
             BASE64Encoder encoder = new BASE64Encoder();
             //存放生成的验证码BufferedImage对象
