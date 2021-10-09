@@ -1,39 +1,109 @@
 # Captcha
 
-#### 介绍
-{**以下是 Gitee 平台说明，您可以替换此简介**
-Gitee 是 OSCHINA 推出的基于 Git 的代码托管平台（同时支持 SVN）。专为开发者提供稳定、高效、安全的云端软件开发协作平台
-无论是个人、团队、或是企业，都能够用 Gitee 实现代码托管、项目管理、协作开发。企业项目请看 [https://gitee.com/enterprises](https://gitee.com/enterprises)}
-
-#### 软件架构
-软件架构说明
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 
-#### 安装教程
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
-
-#### 使用说明
-
-1.  xxxx
-2.  xxxx
-3.  xxxx
-
-#### 参与贡献
-
-1.  Fork 本仓库
-2.  新建 Feat_xxx 分支
-3.  提交代码
-4.  新建 Pull Request
+## 介绍
+Captcha 是一个验证码生成的工具，可以很方便的生成验证码，所有的配置项都有默认的配置，开箱即用。
 
 
-#### 特技
+## 安装教程
 
-1.  使用 Readme\_XXX.md 来支持不同的语言，例如 Readme\_en.md, Readme\_zh.md
-2.  Gitee 官方博客 [blog.gitee.com](https://blog.gitee.com)
-3.  你可以 [https://gitee.com/explore](https://gitee.com/explore) 这个地址来了解 Gitee 上的优秀开源项目
-4.  [GVP](https://gitee.com/gvp) 全称是 Gitee 最有价值开源项目，是综合评定出的优秀开源项目
-5.  Gitee 官方提供的使用手册 [https://gitee.com/help](https://gitee.com/help)
-6.  Gitee 封面人物是一档用来展示 Gitee 会员风采的栏目 [https://gitee.com/gitee-stars/](https://gitee.com/gitee-stars/)
+
+
+## 可配置项
+
+所有的配置项都在 CaptchaBuilder 实例中，且都有默认值
+
+| 属性              | 功能                   | 类型           | 默认值                                                       |
+| ----------------- | ---------------------- | -------------- | ------------------------------------------------------------ |
+| width             | 图片宽度               | int            | 120                                                          |
+| height            | 图片高度               | int            | 45                                                           |
+| codeSize          | 图片上显示验证码的个数 | int            | 4                                                            |
+| base64            | 是否将图片转为 base64  | boolean        | false                                                        |
+| interference      | 是否开启线条扰乱       | boolean        | true                                                         |
+| interferenceSize  | 线条扰乱个数           | int            | 50                                                           |
+| interferenceColor | 线条扰乱颜色           | java.awt.Color | Color.BLACK                                                  |
+| backgroundColor   | 图片背景颜色           | java.awt.Color | Color.WHITE                                                  |
+| borderColor       | 图片边框颜色           | java.awt.Color | Color.BLACK                                                  |
+| paddingLeft       | 左内边距               | int            | 0                                                            |
+| paddingRight      | 右内边距               | int            | 0                                                            |
+| codeBasicLeft     | 字符间距               | int            | 平均分配<br>`(width - paddingLeft - paddingRight) / codeSize` |
+| fontHeight        | 文字高度               | int            | 35                                                           |
+| codeY             | 验证码Y坐标            | int            | 垂直居中<br>`height - (height - fontHeight) / 2`             |
+| codeSequence      | 验证码字符可选字符     | char[]         | 大写字母和数字                                               |
+
+
+
+## 使用说明
+
+### 例子 1
+
+创建两个验证码以 base64 字符串方式
+
+```java
+import cn.qkmango.captcha.CaptchaBuilder;
+import java.io.IOException;
+
+public class Demo {
+    public static void main(String[] args) throws IOException {
+
+        //验证码构造实例
+        CaptchaBuilder builder = new CaptchaBuilder();
+
+        //设置文字长度
+        builder.setCodeSize(4);
+        //设置图片宽度
+        builder.setWidth(120);
+        //设置图片以base64字符串形式
+        builder.setBase64(true);
+
+        //创建一个验证码，获得一个验证码对象
+        CaptchaBuilder.Captcha code1 = builder.create();
+        System.out.println(code1.getCode());
+        System.out.println(code1.getPic());
+
+        //创建一个验证码，获得一个验证码对象
+        CaptchaBuilder.Captcha code2 = builder.create();
+        System.out.println(code2.getCode());
+        System.out.println(code2.getPic());
+    }
+}
+```
+
+
+
+### 例子 2
+
+创建一个验证码并保存到本地文件
+
+```java
+import cn.qkmango.captcha.CaptchaBuilder;
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
+public class Demo2 {
+    public static void main(String[] args) throws IOException {
+
+        //验证码构建器
+        CaptchaBuilder builder = new CaptchaBuilder();
+
+        //创建验证码
+        CaptchaBuilder.Captcha captcha = builder.create();
+
+        //获取验证码文字和图片
+        String code = captcha.getCode();
+        BufferedImage pic = (BufferedImage)captcha.getPic();
+
+        //将验证码图片保存到本地文件
+        FileOutputStream os = new FileOutputStream("D:\\" + code + ".jpg");
+        ImageIO.write(pic,"jpeg",os);
+        os.close();
+
+    }
+}
+```
+

@@ -20,15 +20,15 @@ public class CaptchaBuilder {
 
     //region Attributes
     /**
-     * 定义图片的width
+     * 图片 width
      */
     private int width = 120;
     /**
-     * 定义图片的height
+     * 图片 height
      */
     private int height = 45;
     /**
-     * 定义图片上显示验证码的个数
+     * 图片上显示验证码的个数
      */
     private int codeSize = 4;
 
@@ -58,11 +58,11 @@ public class CaptchaBuilder {
      */
     private Color borderColor = Color.BLACK;
     /**
-     * 左边距
+     * 左内边距
      */
     private int paddingLeft = 0;
     /**
-     * 右边距
+     * 右内边距
      */
     private int paddingRight = 0;
     /**
