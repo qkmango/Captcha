@@ -1,4 +1,4 @@
-package cn.qkmango;
+package cn.qkmango.captcha;
 
 import sun.misc.BASE64Encoder;
 

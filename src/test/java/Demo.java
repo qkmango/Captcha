@@ -1,4 +1,4 @@
-import cn.qkmango.CaptchaBuilder;
+import cn.qkmango.captcha.CaptchaBuilder;
 
 import java.io.IOException;
 

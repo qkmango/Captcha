@@ -1,4 +1,4 @@
-import cn.qkmango.CaptchaBuilder;
+import cn.qkmango.captcha.CaptchaBuilder;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
