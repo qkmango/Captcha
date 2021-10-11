@@ -9,7 +9,7 @@
 
 ## Introduction
 
-Captcha is a verification code generation tool, which can easily generate verification codes. All configuration items have default configurations and can be used out of the box.
+Captcha is a verification code generation tool, which can easily generate verification codes. All configuration items have default values and can be used out of the box.
 
 ## Configuration items
 
