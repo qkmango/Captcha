@@ -2,16 +2,13 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [![Release](https://img.shields.io/github/v/release/qkmango/Captcha?style=flat-square)](https://github.com/qkmango/Captcha) [![homepage:qkmango.cn](https://img.shields.io/badge/homepage-qkmango-default)](https://qkmango.gitee.io/homepage/)
 
-
+🌐 语言 / language 
+中文<img src="README/CN.png"/> <a href="README.en.md">英文<img src="README/EN.png"/></a>
 
 
 ## 介绍
+
 Captcha 是一个验证码生成的工具，可以很方便的生成验证码，所有的配置项都有默认的配置，开箱即用。
-
-
-## 安装教程
-
-
 
 ## 可配置项
 
