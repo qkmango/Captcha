@@ -3,7 +3,8 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [![Release](https://img.shields.io/github/v/release/qkmango/Captcha?style=flat-square)](https://github.com/qkmango/Captcha) [![homepage:qkmango.cn](https://img.shields.io/badge/homepage-qkmango-default)](https://qkmango.gitee.io/homepage/)
 
 🌐 语言 / language 
-中文<img src="E:\MyProject\Captcha\README\CN.png"/> <a href="README.en.md">English<img src="E:\MyProject\Captcha\README\EN.png"/></a>
+- 中文<img src="README\CN.png"/>
+- <a href="README.en.md">English<img src="README\EN.png"/><a/>
 
 
 ## 介绍
