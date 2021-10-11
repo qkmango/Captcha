@@ -40,15 +40,15 @@ public class CaptchaBuilder {
     /**
      * 是否开启线条扰乱
      */
-    private boolean interference = true;
+    private boolean disturbance = true;
     /**
      * 线条扰乱个数
      */
-    private int interferenceSize = 50;
+    private int disturbanceSize = 50;
     /**
      * 线条扰乱颜色
      */
-    private Color interferenceColor = Color.BLACK;
+    private Color disturbanceColor = Color.BLACK;
     /**
      * 图片背景颜色
      */
@@ -116,10 +116,10 @@ public class CaptchaBuilder {
         g.setColor(borderColor);
         g.drawRect(0, 0, width - 1, height - 1);
 
-        if (interference) {
+        if (disturbance) {
             // 随机产生 interferenceSize 条干扰线
-            g.setColor(interferenceColor);
-            for (int i = 0; i < interferenceSize; i++) {
+            g.setColor(disturbanceColor);
+            for (int i = 0; i < disturbanceSize; i++) {
                 int x = random.nextInt(width);
                 int y = random.nextInt(height);
                 int xl = random.nextInt(12);
@@ -207,28 +207,28 @@ public class CaptchaBuilder {
         this.base64 = base64;
     }
 
-    public boolean isInterference() {
-        return interference;
+    public boolean isDisturbance() {
+        return disturbance;
     }
 
-    public void setInterference(boolean interference) {
-        this.interference = interference;
+    public void setDisturbance(boolean disturbance) {
+        this.disturbance = disturbance;
     }
 
-    public int getInterferenceSize() {
-        return interferenceSize;
+    public int getDisturbanceSize() {
+        return disturbanceSize;
     }
 
-    public void setInterferenceSize(int interferenceSize) {
-        this.interferenceSize = interferenceSize;
+    public void setDisturbanceSize(int disturbanceSize) {
+        this.disturbanceSize = disturbanceSize;
     }
 
-    public Color getInterferenceColor() {
-        return interferenceColor;
+    public Color getDisturbanceColor() {
+        return disturbanceColor;
     }
 
-    public void setInterferenceColor(Color interferenceColor) {
-        this.interferenceColor = interferenceColor;
+    public void setDisturbanceColor(Color disturbanceColor) {
+        this.disturbanceColor = disturbanceColor;
     }
 
     public Color getBackgroundColor() {
